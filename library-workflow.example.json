@@ -1,0 +1,11 @@
+{
+  "source_root": "E:\\path\\to\\source-transcripts",
+  "target_root": "F:\\path\\to\\obsidian-vault\\raw\\02-papers",
+  "human_sop": "F:\\path\\to\\obsidian-vault\\docs\\Human_SOP.md",
+  "iteration_log": "F:\\path\\to\\obsidian-vault\\docs\\iteration-log.md",
+  "workbuddy_handoff": "F:\\path\\to\\obsidian-vault\\docs\\agent-handoff.md",
+  "output_suffix": "_Obsidian笔记",
+  "mirror_source_folders": true,
+  "default_batch_size": 1,
+  "overwrite": false
+}

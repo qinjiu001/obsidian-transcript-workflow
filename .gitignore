@@ -1,0 +1,44 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+library-workflow.json
+subscriptions.json
+*token*
+*secret*
+
+# Local podcast state and generated content
+podcast_library/
+*.sqlite3
+*.db
+*.skill
+
+# Audio and temporary files
+*.mp3
+*.m4a
+*.wav
+*.tmp
+tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
