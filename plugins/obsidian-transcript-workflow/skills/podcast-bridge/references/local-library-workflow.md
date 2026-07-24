@@ -14,7 +14,21 @@ Convert each source DOCX into one canonical Chinese Markdown article that is:
 
 ## Local Configuration
 
-Read `library-workflow.json` for the current source root, target root, filename suffix, and overwrite policy. Do not hardcode the Human SOP's old “309 files” count. Always run the live scanner.
+Read the per-user configuration from
+`$CODEX_HOME/obsidian-transcript-workflow/library-workflow.json` (or
+`~/.codex/obsidian-transcript-workflow/library-workflow.json` when
+`CODEX_HOME` is not set). A legacy skill-local `library-workflow.json` remains
+supported. Do not hardcode the Human SOP's old “309 files” count. Always run
+the live scanner.
+
+If the user configuration does not exist, initialize it first:
+
+```powershell
+python -X utf8 scripts/init_library_config.py
+```
+
+Then fill in the source root, target root, Human SOP, iteration log, and
+handoff paths before scanning.
 
 ```powershell
 python -X utf8 scripts/scan_transcript_queue.py
