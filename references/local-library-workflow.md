@@ -25,7 +25,7 @@ Current default mapping:
 ```text
 SOURCE_ROOT/<relative-folder>/<name>_原文.docx
     ->
-F:/obsidian/知识库/知识库收集/raw/02-papers/<relative-folder>/<name>_Obsidian笔记.md
+<OBSIDIAN_VAULT>/raw/02-papers/<relative-folder>/<name>_Obsidian笔记.md
 ```
 
 The scanner treats an existing exact note, a same-stem `.md`, or common Obsidian-note suffix variants as already done.
