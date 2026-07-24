@@ -6,14 +6,32 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import sys
 from pathlib import Path
 
 
-DEFAULT_CONFIG = Path(__file__).resolve().parent.parent / "library-workflow.json"
+SKILL_ROOT = Path(__file__).resolve().parent.parent
+LEGACY_CONFIG = SKILL_ROOT / "library-workflow.json"
+
+
+def codex_home() -> Path:
+    configured = os.environ.get("CODEX_HOME")
+    return Path(configured).expanduser() if configured else Path.home() / ".codex"
+
+
+def default_config() -> Path:
+    user_config = codex_home() / "obsidian-transcript-workflow" / "library-workflow.json"
+    return user_config if user_config.exists() or not LEGACY_CONFIG.exists() else LEGACY_CONFIG
 
 
 def load_config(path: Path) -> dict:
+    if not path.is_file():
+        raise FileNotFoundError(
+            "配置不存在: "
+            f"{path}\n请先运行 scripts/init_library_config.py，"
+            "或使用 --config 指定配置文件。"
+        )
     data = json.loads(path.read_text(encoding="utf-8"))
     required = ("source_root", "target_root")
     missing = [key for key in required if not data.get(key)]
@@ -72,7 +90,7 @@ def scan(config: dict, create_folders: bool = False) -> list[dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="扫描 DOCX 文稿与 Obsidian 笔记处理队列")
-    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument("--config", type=Path, default=default_config())
     parser.add_argument("--limit", type=int, default=20, help="文本输出最多列出的 pending 数")
     parser.add_argument("--format", choices=("text", "json", "csv"), default="text")
     parser.add_argument("--create-folders", action="store_true", help="创建镜像目标文件夹")

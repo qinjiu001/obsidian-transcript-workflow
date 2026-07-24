@@ -1,0 +1,37 @@
+{
+  "name": "obsidian-transcript-workflow",
+  "version": "0.1.0",
+  "description": "Convert podcast, interview, and blog transcripts into iterative Obsidian deep notes.",
+  "author": {
+    "name": "qinjiu001",
+    "url": "https://github.com/qinjiu001"
+  },
+  "homepage": "https://github.com/qinjiu001/obsidian-transcript-workflow",
+  "repository": "https://github.com/qinjiu001/obsidian-transcript-workflow",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "podcast",
+    "transcript",
+    "mermaid",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Obsidian Transcript Workflow",
+    "shortDescription": "把播客和博客全文稿整理成 Obsidian 深度笔记",
+    "longDescription": "包含 Podcast Bridge 与 Mermaid Visualizer：读取完整文稿、保留证据边界、生成 Obsidian Markdown，并将 Agent 反馈写回迭代记录。",
+    "developerName": "qinjiu001",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/qinjiu001/obsidian-transcript-workflow",
+    "brandColor": "#0C8599",
+    "defaultPrompt": [
+      "按 Human SOP 把这份文稿整理成 Obsidian 深度笔记。",
+      "继续处理本地文稿队列，并把反馈写回迭代记录。",
+      "把这段流程生成兼容 Obsidian 的 Mermaid 图。"
+    ]
+  }
+}

@@ -30,6 +30,8 @@ podcast-bridge 用于管理播客订阅、同步 RSS 单集元数据、转录播
 - 摘要需要在读取全文稿之后由 Agent 自己生成；`--summary` 只是兼容旧参数和表达期望风格，不会稳定地产生摘要文件。
 - `obsidian` 不是仅给 Deep 文稿加 YAML。默认必须先满足 Deep 的证据覆盖，再增加属性、双链、图表或指标、行动清单和知识拆分。
 - 本地文稿入库默认只生成一个 Obsidian Markdown 成品，不先生成 Deep 文件再调用 zine，也不生成重复 HTML。使用用户现有的 Obsidian 主题，不添加自定义 `cssclasses` 或重复的正文“基本信息”。
+- 本地文稿队列优先读取 `$CODEX_HOME/obsidian-transcript-workflow/library-workflow.json`。配置不存在时，先运行 `python -X utf8 scripts/init_library_config.py` 创建模板，再让用户确认路径。
+- 文稿确实包含流程、层级、决策或因果系统时，调用同一 Plugin 中的 `mermaid-visualizer`；默认最多一张图，没有信息增益时不生成。
 - 重要案例、数字、因果链和原稿不确定性不能因格式化而丢失。Agent 新增的运营判断必须放在“我的思考”或“应用建议”中，不得伪装成原文观点。
 - 本地文稿 Workflow 每次执行结束后，必须把运行结果、困难、临时假设、人工确认项和规则升级状态写回当前《迭代记录》，形成 Human → Agent → Human 的闭环。
 - 默认 ASR provider 使用 `bcut`，不需要 API Key。

@@ -42,3 +42,7 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Local plugin validation
+.tmp-codex-home/
+.tmp-library-workflow.json

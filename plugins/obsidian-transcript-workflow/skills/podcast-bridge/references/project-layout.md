@@ -8,7 +8,7 @@ Use this reference when changing the skill structure, explaining where files liv
 podcast-bridge/
 ├── SKILL.md
 ├── ARCHITECTURE.md
-├── library-workflow.json
+├── library-workflow.example.json
 ├── references/
 │   ├── transcription.md
 │   ├── summarization.md
@@ -53,6 +53,13 @@ A strict skill package needs `SKILL.md`. `references/` is for detailed instructi
 
 `ARCHITECTURE.md` is the human-readable explanation of how routing, runtime execution, data state, and summary generation fit together.
 
-`library-workflow.json` stores this user's local source/target mapping and batch defaults; the current target root is `raw/02-papers`. `scan_transcript_queue.py` computes live completion state. `assets/podcast-zine.css` remains an optional legacy asset, but local-library notes do not use it or add YAML `cssclasses` by default.
+The per-user
+`~/.codex/obsidian-transcript-workflow/library-workflow.json` stores local
+source/target mapping and batch defaults; the current target root is
+`raw/02-papers`. `library-workflow.example.json` is the distributable template,
+and `scripts/init_library_config.py` copies it to the per-user location.
+`scan_transcript_queue.py` computes live completion state.
+`assets/podcast-zine.css` remains an optional legacy asset, but local-library
+notes do not use it or add YAML `cssclasses` by default.
 
 `podcast_library/` and `subscriptions.json` are runtime state. They are useful in this local working skill, but should be excluded or reset for a clean distributable template if the skill is packaged for others.
