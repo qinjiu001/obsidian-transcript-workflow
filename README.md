@@ -46,6 +46,7 @@ flowchart LR
 | `docs/迭代记录.md` | V02–V04 的问题、试跑反馈和规则升级记录 |
 | `docs/WorkBuddy_播客文稿处理交接文档.md` | 给其他 Agent 使用的自包含交接说明 |
 | `library-workflow.example.json` | 不包含个人路径的配置示例 |
+| `bundled-skills/mermaid-visualizer/` | 可选配套 Skill，用于生成并检查 Obsidian/GitHub 兼容的 Mermaid 图 |
 
 ## 安装
 
@@ -70,6 +71,19 @@ Copy-Item `
 ```
 
 然后将 `library-workflow.json` 中的示例路径替换为自己的源文稿目录、Obsidian 目标目录、Human SOP 和迭代记录路径。
+
+### 安装 Mermaid Visualizer
+
+仓库已附带 `mermaid-visualizer`。它是独立 Skill，需要复制到与 `podcast-bridge` 同级的目录：
+
+```powershell
+$source = "$env:USERPROFILE\.codex\skills\podcast-bridge\bundled-skills\mermaid-visualizer"
+$target = "$env:USERPROFILE\.codex\skills\mermaid-visualizer"
+New-Item -ItemType Directory -Path $target -Force | Out-Null
+Copy-Item "$source\*" $target -Recurse -Force
+```
+
+重新启动 Codex 后，当文稿包含真实流程、层级、决策或因果关系时，主工作流可以调用该 Skill 生成专业 Mermaid；没有必要可视化时仍应省略图表。
 
 ## 使用示例
 
@@ -104,3 +118,5 @@ Agent 应先读取 `SKILL.md`，再根据任务读取相应的 `references/` 文
 ## 来源与许可
 
 底层播客订阅、转录和检索能力基于 [Hatari130/podcast-bridge](https://github.com/Hatari130/podcast-bridge) 继续定制。仓库保留原项目的 MIT License。
+
+配套的 `mermaid-visualizer` 来自 [axtonliu/axton-obsidian-visual-skills](https://github.com/axtonliu/axton-obsidian-visual-skills)，由 Axton Liu 创建并以 MIT License 发布；其原始许可证保存在 `bundled-skills/mermaid-visualizer/LICENSE`。
