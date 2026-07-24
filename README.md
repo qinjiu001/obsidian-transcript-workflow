@@ -1,4 +1,7 @@
 # Obsidian Transcript Workflow
+给codex的安装指令（非常重要，必须是用这个指令来安装）
+codex plugin marketplace add qinjiu001/obsidian-transcript-workflow
+codex plugin add obsidian-transcript-workflow@qinjiu001-skills
 
 一个可以通过 Codex Plugin 一次安装的博客/播客全文稿转写工作流。
 
